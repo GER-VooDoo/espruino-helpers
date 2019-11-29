@@ -1,6 +1,26 @@
+class EmitterEventMap {
+    constructor(){
+      this.items = {};
+      this.get = (key) => {
+        return this.items[key];
+      };
+      this.set = (key, value) => {
+        this.items[key] = value;
+      };
+    }
+    has(key){
+        return (typeof(this.items[key]) !== "undefined") ? true : false;
+    }
+    forEach(cb){
+        for (let key in this.items) {
+            cb(this.items[key], key, this);
+        }
+    }
+}
+
 class Emitter {
     constructor() {
-        this.listeners = new Map();
+        this.listeners = new EmitterEventMap();
     }
     addListener(label, callback, vm) {
         if (typeof callback === 'function') {
@@ -73,4 +93,5 @@ class Emitter {
     }
 }
 
-exports = Emitter;
+exports.EmitterEventMap = EmitterEventMap;
+exports.Emitter = Emitter;
