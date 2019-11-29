@@ -1,3 +1,12 @@
+/**
+ * Usage:
+ *  const EM = require("https://raw.githubusercontent.com/GER-VooDoo/espruino-helpers/master/emitter.js");
+ *  const Emitter = EM.Emitter, EmitterEventMap = EM.EmitterEventMap;
+ */
+
+/**
+ * Basic Map (es6-map is not available)
+ */
 class EmitterEventMap {
     constructor(){
       this.items = {};
@@ -18,6 +27,9 @@ class EmitterEventMap {
     }
 }
 
+/**
+ * Emitter class
+ */
 class Emitter {
     constructor() {
         this.listeners = new EmitterEventMap();
